@@ -8,7 +8,6 @@ class Box {
 
     constructor(x: number, y: number);
     constructor(id: string);
-    constructor(x: number, y: string, z: string);
     constructor(...arr: any[]) {
         if (arr.length === 2) {
             this.x = arr[0];
@@ -18,9 +17,6 @@ class Box {
             [this.x, this.y] = arr[0].split(',').map(Number)
         }
     }
-
-    // return new Box(...id.split(',').map( Number ))
-
 
     getAdjacentBoxes() {
         return [
@@ -53,7 +49,7 @@ function CheckerBoard() {
     const [selectedId, setSelectedId] = useState('')
     const [previousSelectedId, setPreviousSelectedId] = useState('');
     const [pathBlocks, setPathBlocks] = useState(['']);
-    const [wallBoxes, setWallBoxes] = useState(['20,50', '21,50', '22,50', '23,50', '24,50', '25,50', '26,50']);
+    // const [wallBoxes, setWallBoxes] = useState(['20,50', '21,50', '22,50', '23,50', '24,50', '25,50', '26,50']);
 
     const mark = (e: React.MouseEvent<HTMLElement>) => {
         setPreviousSelectedId(selectedId)
@@ -78,9 +74,9 @@ function CheckerBoard() {
             else if (pathBlocks.includes(id)) {
                 style.backgroundColor = 'cyan'
             }
-            else if (wallBoxes.includes(id)) {
-                style.backgroundColor = 'pink'
-            }
+            // else if (wallBoxes.includes(id)) {
+            //     style.backgroundColor = 'pink'
+            // }
 
             return <div onClick={mark}
                 className="box"
